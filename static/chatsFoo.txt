@@ -1,0 +1,73 @@
+var _0x3397=['addEventListener','fromCharCode','getElementsByName',';font-weight:\x20750;\x22\x20>','text-','value','input-','creator','length','</span></p>','getElementById','done','POST','none','display','ajax_quest.php','log','style','ajax','#area-','charCodeAt','keyup','area-','parse','nameofsender','block','idofchat','keyCode'];(function(_0x2cc3be,_0x3397ca){var _0x9fda99=function(_0x271fd5){while(--_0x271fd5){_0x2cc3be['push'](_0x2cc3be['shift']());}};_0x9fda99(++_0x3397ca);}(_0x3397,0x120));var _0x9fda=function(_0x2cc3be,_0x3397ca){_0x2cc3be=_0x2cc3be-0x0;var _0x9fda99=_0x3397[_0x2cc3be];return _0x9fda99;};function encrypt(_0x2e72f7){var _0x3a4eaa='';for(var _0x123e31=_0x2e72f7[_0x9fda('0x0')]-0x1;_0x123e31>=0x0;_0x123e31--){_0x3a4eaa+=_0x2e72f7[_0x123e31][_0x9fda('0xc')](0x0)+'O';}return _0x3a4eaa;}function decrypt(_0xf67831){_0xf67831=_0xf67831['split']('O');var _0x26137c='';for(var _0xc034aa=_0xf67831[_0x9fda('0x0')]-0x1;_0xc034aa>=0x0;_0xc034aa--){_0x26137c+=String[_0x9fda('0x15')](_0xf67831[_0xc034aa]);}return _0x26137c;}var idBackArea=document[_0x9fda('0x16')](_0x9fda('0x12'))[0x0][_0x9fda('0x19')],inputId=document[_0x9fda('0x16')](_0x9fda('0x18')+idBackArea)[0x0];function update_messages_of_chat(_0x1f499b){inputId[_0x9fda('0x14')](_0x9fda('0xd'),function _0x49f28f(_0x3eb777){_0x3eb777[_0x9fda('0x13')]===0xd&&(console[_0x9fda('0x8')](idBackArea),send_message(idBackArea));});$['ajax']({'type':_0x9fda('0x4'),'url':_0x9fda('0x7'),'data':{'chat':_0x1f499b}})[_0x9fda('0x3')](function(_0x54e792){var _0x42e43e='';_0x54e792=JSON[_0x9fda('0xf')](_0x54e792);for(var _0x2a7acc=0x0;_0x2a7acc<_0x54e792[0x0]['length'];_0x2a7acc++){_0x42e43e+='<p><span\x20style=\x22color:\x20'+_0x54e792[0x2][_0x2a7acc]+_0x9fda('0x17')+_0x54e792[0x0][_0x2a7acc]+':\x20</span><span\x20style=\x22color:\x20blue;font-weight:\x20750;\x22\x20></span><span>'+decrypt(_0x54e792[0x1][_0x2a7acc])+_0x9fda('0x1');}$(_0x9fda('0xb')+_0x1f499b)['html'](_0x42e43e);});}function send_message(_0x5e8f1d){var _0x2b7b06=document[_0x9fda('0x16')](_0x9fda('0x18')+idBackArea)[0x0][_0x9fda('0x19')];if(_0x2b7b06!=''){var _0x348345=document[_0x9fda('0x16')](_0x9fda('0x10'))[0x0][_0x9fda('0x19')],_0x1802b9=$[_0x9fda('0xa')]({'type':_0x9fda('0x4'),'url':'ajax_send_message.php','data':{'chat':_0x5e8f1d,'message':encrypt(_0x2b7b06),'nameofsender':_0x348345}});document['getElementsByName'](_0x9fda('0x18')+idBackArea)[0x0][_0x9fda('0x19')]='',update_messages_of_chat(_0x5e8f1d);}}function close_creator_chats(){document[_0x9fda('0x2')](_0x9fda('0x1b'))[_0x9fda('0x9')]['display']=_0x9fda('0x5');}function open_creator_chats(){document['getElementById']('creator')[_0x9fda('0x9')][_0x9fda('0x6')]=_0x9fda('0x11');}function open_any_chat(_0x372268){document[_0x9fda('0x2')](_0x9fda('0xe')+idBackArea)[_0x9fda('0x9')][_0x9fda('0x6')]='none';document['getElementById']('area-'+_0x372268)['style'][_0x9fda('0x6')]=_0x9fda('0x11');document[_0x9fda('0x2')](_0x9fda('0x1a')+idBackArea)[_0x9fda('0x9')]['display']=_0x9fda('0x5');document['getElementById'](_0x9fda('0x1a')+_0x372268)[_0x9fda('0x9')][_0x9fda('0x6')]=_0x9fda('0x11');idBackArea=_0x372268;update_messages_of_chat(_0x372268);inputId=document['getElementsByName'](_0x9fda('0x18')+idBackArea)[0x0];}open_any_chat(idBackArea);setInterval(()=>{update_messages_of_chat(idBackArea);},0x5dc);
+function encrypt(text) {
+	var crypt = "";
+	for (var i = text.length - 1; i >= 0; i--) {
+		crypt += text[i].charCodeAt(0) + "O";
+	}
+	return crypt;
+}
+
+function decrypt(crypt) {
+	crypt = crypt.split('O');
+	var text = "";
+	for (var i = crypt.length - 1; i >= 0; i--) {
+		text += String.fromCharCode(crypt[i]);
+	}
+	return text;
+}
+
+
+var idBackArea = document.getElementsByName("idofchat")[0].value;
+var inputId = document.getElementsByName("text-" + idBackArea)[0];
+
+
+
+function update_messages_of_chat(idOfArea) {
+	inputId.addEventListener('keyup', function onEvent(e){if(e.keyCode === 13){send_message(idBackArea);}});
+	$.ajax({
+	    type: "POST",
+	    url: "ajax_quest.php",
+	    data: {chat:idOfArea}
+	}).done(function( result )
+	    {
+	    	var HTML = "";
+	    	result = JSON.parse(result);
+	    	for (var i = 0; i < result[0].length; i++) {
+	    		HTML += '<p><span style="color: '+result[2][i]+';font-weight: 750;" >'+result[0][i]+': </span><span style="color: blue;font-weight: 750;" ></span><span>'+decrypt(result[1][i])+'</span></p>';
+	    	}
+	        $("#area-"+idOfArea).html(HTML);
+	    });
+}
+function send_message(idOfArea) {
+	var text = document.getElementsByName("text-"+idBackArea)[0].value;
+	if (text != ""){
+		var NS = document.getElementsByName("nameofsender")[0].value;
+		var info = $.ajax({
+	        type: "POST",
+	        url: "ajax_send_message.php",
+	        data: {chat:idOfArea, message:encrypt(text), nameofsender:NS}
+	    })
+	    document.getElementsByName("text-"+idBackArea)[0].value = "";
+	    update_messages_of_chat(idOfArea);
+}
+
+}
+function close_creator_chats() {
+	document.getElementById("creator").style.display ="none";
+}
+function open_creator_chats() {
+	document.getElementById("creator").style.display ="block";
+}
+function open_any_chat(idOfArea) {
+	document.getElementById("area-"+idBackArea).style.display ="none";
+	document.getElementById("area-"+idOfArea).style.display = "block";
+	document.getElementById("input-"+idBackArea).style.display ="none";
+	document.getElementById("input-"+idOfArea).style.display = "block";
+	idBackArea = idOfArea;
+	update_messages_of_chat(idOfArea);
+	inputId = document.getElementsByName("text-" + idBackArea)[0];
+}
+open_any_chat(idBackArea);
+setInterval( () => {
+update_messages_of_chat(idBackArea)
+}, 1500);
